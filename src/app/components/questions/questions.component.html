@@ -1,0 +1,96 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.148/pdf.min.js"></script>
+<div class="container">
+    <div class="option-selected">
+        <img src="assets/icons/picture.png">
+        <h2>Iconograficos</h2>
+        <div class="arrow-down">
+            <img src="assets/icons/arrow-down.png">
+            
+        </div>
+    </div>
+    <div class="text-top">
+        <h2>
+            Cosiderando o arquivo {{tipoDocumento}} abaixo responda as seguintes perguntas de acordo com o conteudo:
+        </h2>
+    </div>
+    <div class="conteudo">
+        <div id="audiovisual">
+            <img src="assets\audiovisuais\BR_RJANRIO_O2_0_FOT_0027_d0001de0001_page-0001.jpg">
+        </div>
+    </div>
+    <form [formGroup]="informacoesForm" (ngSubmit)="salvarForm()">
+        <div *ngIf="questaoAtual==0" class="perguntas" id="titulo">
+            <h2 class="title">Com base nas informações fornecidas no documento acima forneça um titulo: </h2>
+            <div class="box-response"><input type="text" class="text" name="titulo" id="placeholder-button"
+                    formControlName="titulo" (focus)="removerPlaceholder()" (blur)="restaurarPlaceholder()">
+            </div>
+            <div class="buttons primeiro">
+                <button class="green-button" (click)="proximo()">
+                    <h2>Proximo</h2>
+                    <img class="seta-proxima" src="assets/icons/next.png">
+                </button>
+            </div>
+        </div>
+        <div *ngIf="questaoAtual==1" class="perguntas" id="data">
+            <h2 class="title">Com base na analise das informações contidas no documento acima forneça o periodo do
+                acontecimeto:<br>
+                (deixe em branco se não souber) </h2>
+            <div class="box-response data">
+                <div class="metade">
+                    <h2>De:</h2>
+                    <input type="date" name="data" class="text" formControlName="data1">
+                </div>
+                <div class="metade">
+                    <h2>Ate:</h2>
+                    <input type="date" name="data" class="text" formControlName="data2">
+                </div>
+            </div>
+            <div class="buttons segundo">
+                <button class="green-button anterior" (click)="anterior()">
+                    <img class="seta-anterior" src="assets/icons/previus.png">
+                    <h2>Anterior</h2>
+                </button>
+                <button class="green-button" (click)="proximo()">
+                    <h2>Proximo</h2>
+                    <img class="seta-proxima" src="assets/icons/next.png">
+                </button>
+            </div>
+        </div>
+        <div *ngIf="questaoAtual==2" class="perguntas" id="data">
+            <h2 class="title">Com base na analise das informações contidas no documento acima forneça um resumo em
+                topicos do que se trata:<br>
+                (deixe em branco se não souber) </h2>
+            <div class="box-response"><input type="text" class="text" name="codneudo" id="placeholder-button"
+                    formControlName="conteudo" (focus)="removerPlaceholder()" (blur)="restaurarPlaceholder()">
+            </div>
+            <div class="buttons segundo">
+                <button class="green-button anterior" (click)="anterior()">
+                    <img class="seta-anterior" src="assets/icons/previus.png">
+                    <h2>Anterior</h2>
+                </button>
+                <button class="green-button" type="submit" (click)="proximo()">
+                    <h2>Proximo</h2>
+                    <img class="seta-proxima" src="assets/icons/next.png">
+                </button>
+            </div>
+        </div>
+        <div *ngIf="questaoAtual==3" class="perguntas" id="">
+            <h2 class="title">Com base na analise das informações contidas no documento acima selecione ou crie palavras chave para o documento:<br>
+                (deixe em branco se não souber) </h2>
+            <div class="box-response"><input type="text" class="text" name="indexacao" id="placeholder-button" 
+                formControlName="indexar" (focus)="removerPlaceholder()" (blur)="restaurarPlaceholder()">
+            </div>
+            <div class="buttons segundo">
+                <button class="green-button anterior" (click)="anterior()">
+                    <img class="seta-anterior" src="assets/icons/previus.png">
+                    <h2>Anterior</h2>
+                </button>
+                <button class="green-button" type="submit" (click)="enviar()">
+                    <h2>Cofirmar</h2>
+                    <img class="seta-proxima" src="assets/icons/next.png">
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
